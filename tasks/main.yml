@@ -17,6 +17,7 @@
   file:
     path: "{{ hostvars[inventory_hostname].working_directory }}{{ server_application_name }}/files"
     state: directory
+    mode: 07500
 
 - name: Create app container
   docker_container:
