@@ -44,5 +44,6 @@
       AWS_BUCKET: "{{ aws_bucket }}"
       DOMAIN_NAME: "{{ domain_name }}"
       VIRTUAL_HOST: "{{ domain_name }}"
-      LETSENCRYPT_HOST: "{{ domain_name }}"
+      VIRTUAL_PATH: "{{ subpath }}"
+      VIRTUAL_DEST: "/"
       VIRTUAL_PORT: "80"
