@@ -3,7 +3,7 @@
 - name: 'Check mandatory variables are defined'
   assert:
     that:
-      - server_application_name is defined
+      - application_name is defined
       - cloudwatch_region is defined
       - cloudwatch_log_group is defined
       - user_info_service_endpoint is defined
@@ -15,14 +15,14 @@
 
 - name: Create the files directory
   file:
-    path: "{{ hostvars[inventory_hostname].working_directory }}{{ server_application_name }}/files"
+    path: "{{ hostvars[inventory_hostname].working_directory }}{{ application_name }}/files"
     state: directory
     mode: 07500
 
 - name: Create app container
   docker_container:
-    name: "{{ server_application_name }}"
-    image: "namelivia/{{ server_application_name }}:latest"
+    name: "{{ application_name }}"
+    image: "namelivia/{{ application_name }}:latest"
     memory: "200MB"
     pull: true
     cleanup: true
@@ -31,7 +31,7 @@
     log_options:
       awslogs-region: "{{ cloudwatch_region }}"
       awslogs-group: "{{ cloudwatch_log_group }}"
-      awslogs-stream: "{{ server_application_name }}"
+      awslogs-stream: "{{ application_name }}"
     networks:
       - name: "pomerium"
     exposed_ports:
