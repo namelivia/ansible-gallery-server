@@ -12,6 +12,7 @@
       - aws_default_region is defined
       - aws_secret_access_key is defined
       - aws_access_key_id is defined
+      - aws_dynamo_table is defined
 
 - name: Create the files directory
   file:
@@ -42,6 +43,7 @@
       AWS_SECRET_ACCESS_KEY: "{{ aws_secret_access_key }}"
       AWS_DEFAULT_REGION: "{{ aws_default_region }}"
       AWS_BUCKET: "{{ aws_bucket }}"
+      DYNAMO_TABLE: "{{ aws_dynamo_table }}"
       DOMAIN_NAME: "{{ domain_name }}"
       VIRTUAL_HOST: "{{ domain_name }}"
       VIRTUAL_PATH: "{{ subpath }}"
