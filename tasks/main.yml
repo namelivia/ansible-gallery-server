@@ -4,8 +4,7 @@
   assert:
     that:
       - application_name is defined
-      - cloudwatch_region is defined
-      - cloudwatch_log_group is defined
+      - loki_url is defined
       - user_info_service_endpoint is defined
       - domain_name is defined
       - aws_bucket is defined
@@ -28,11 +27,10 @@
     pull: true
     cleanup: true
     restart_policy: "always"
-    log_driver: "awslogs"
+    log_driver: "loki"
     log_options:
-      awslogs-region: "{{ cloudwatch_region }}"
-      awslogs-group: "{{ cloudwatch_log_group }}"
-      awslogs-stream: "{{ application_name }}"
+      loki-url: "{{ loki_url }}"
+      loki-batch-size: "400"
     networks:
       - name: "pomerium"
     exposed_ports:
