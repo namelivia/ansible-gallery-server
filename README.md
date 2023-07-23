@@ -24,3 +24,4 @@ roles:
  - `aws_default_region` Region for the images S3 bucket.
  - `aws_bucket` Name for the images S3 bucket.
  - `domain_name` Domain name in wich the application will be served from.
+ - `host_port` Port to be mapped in the host machine.
